@@ -47,7 +47,6 @@
   #legend .swatch.green   { background: #2FB13F; }
   #legend .swatch.buff    { height: 5px; background: #2CBDEE; }
   #legend .swatch.lane    { background: repeating-linear-gradient(90deg, #2CBDEE 0 5px, transparent 5px 8px); }
-  #legend .swatch.trail   { height: 5px; background: #196a3a; }
   #legend .swatch.trail2  { height: 5px; background: #9c4dcc; }
   .maplibregl-popup-content { font-size: 12px; line-height: 1.5; padding: 10px 14px; }
   .maplibregl-popup-content strong { font-size: 13px; }
@@ -79,8 +78,7 @@
   <label class="row off"><input type="checkbox" data-facility="Neighborhood Greenway" disabled><span class="swatch green"></span><span class="label">Greenway</span></label>
   <label class="row"><input type="checkbox" data-facility="Buffered Bike Lane" checked disabled><span class="swatch buff"></span><span class="label">Buffered</span></label>
   <label class="row"><input type="checkbox" data-facility="Bike Lane" checked disabled><span class="swatch lane"></span><span class="label">Standard</span></label>
-  <label class="row off"><input type="checkbox" data-facility="Off-Street Trail" disabled><span class="swatch trail"></span><span class="label">Off-Street Trail</span></label>
-  <label class="row"><input type="checkbox" data-facility="Trails v2" checked disabled><span class="swatch trail2"></span><span class="label">Trails v2</span></label>
+  <label class="row off"><input type="checkbox" data-facility="Trail" disabled><span class="swatch trail2"></span><span class="label">Trail</span></label>
   <div class="footnote">
     <label class="row off"><input type="checkbox" id="toggle-crime"><span class="swatch crime"></span><span class="label">Crime</span></label>
   </div>
@@ -114,7 +112,6 @@ const PBL_COLOR  = '#22CBDE';
 const PBL_CASING = '#221C4C';
 const GREENWAY_COLOR = '#2FB13F';
 const LANE_COLOR = '#2CBDEE';
-const TRAIL_COLOR = '#196a3a';
 const TRAILS_V2_COLOR = '#9c4dcc';
 
 const map = new maplibregl.Map({
@@ -260,7 +257,7 @@ map.on('load', async () => {
         type: 'line',
         source: 'off-street-trails',
         layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' },
-        paint: { 'line-color': TRAIL_COLOR, 'line-width': 3 }
+        paint: { 'line-color': TRAILS_V2_COLOR, 'line-width': 3 }
       });
     }
   } catch (err) {
@@ -278,7 +275,7 @@ map.on('load', async () => {
         id: 'trails-v2',
         type: 'line',
         source: 'trails-v2',
-        layout: { 'line-cap': 'round', 'line-join': 'round' },
+        layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' },
         paint: { 'line-color': TRAILS_V2_COLOR, 'line-width': 3 }
       });
     }
@@ -350,8 +347,7 @@ map.on('load', async () => {
     'Neighborhood Greenway': ['greenway'],
     'Buffered Bike Lane':    ['buffered-lane'],
     'Bike Lane':             ['bike-lane'],
-    'Off-Street Trail':      ['off-street-trail'],
-    'Trails v2':             ['trails-v2']
+    'Trail':                 ['off-street-trail', 'trails-v2']
   };
 
   const checkboxes = document.querySelectorAll('#legend input[type="checkbox"][data-facility]');
