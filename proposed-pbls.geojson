@@ -1,0 +1,41 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "BIKE_DSPLY": "Protected Bike Lane",
+        "ST_STREET": "N CLARK ST",
+        "ST_FROM": "W WINNEMAC AVE",
+        "ST_TO": "W CARMEN AVE",
+        "PROPOSED": true,
+        "note": "Test addition via Overpass-snapped centerline"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -87.6680849,
+            41.9733904
+          ],
+          [
+            -87.668096,
+            41.9734758
+          ],
+          [
+            -87.6681052,
+            41.9735472
+          ],
+          [
+            -87.6682014,
+            41.9742895
+          ],
+          [
+            -87.6682114,
+            41.9743666
+          ]
+        ]
+      }
+    }
+  ]
+}

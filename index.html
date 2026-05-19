@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Chicago Bike Network (Dec 2025) + Proposals</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<style>
+  html, body { margin: 0; height: 100%; font-family: system-ui, -apple-system, sans-serif; }
+  #map { position: absolute; inset: 0; }
+
+  #legend {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 1;
+    background: #fff;
+    padding: 12px 14px;
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    font-size: 13px;
+    max-width: 260px;
+  }
+  #legend h3 { margin: 0 0 8px; font-size: 14px; }
+  #legend .row {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  #legend .row input[type="checkbox"] {
+    margin: 0 8px 0 0;
+    cursor: pointer;
+  }
+  #legend .row.off .swatch { opacity: 0.25; }
+  #legend .row.off .label { color: #aaa; text-decoration: line-through; }
+  #legend .swatch {
+    display: inline-block;
+    width: 22px;
+    height: 4px;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  #legend .swatch.pbl     { height: 6px; background: #22CBDE; border-top: 1px solid #221C4C; border-bottom: 1px solid #221C4C; }
+  #legend .swatch.green   { background: #2FB13F; }
+  #legend .swatch.buff    { height: 5px; background: #2CBDEE; }
+  #legend .swatch.lane    { background: repeating-linear-gradient(90deg, #2CBDEE 0 5px, transparent 5px 8px); }
+
+  #legend .footnote {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    font-size: 11px;
+    color: #555;
+    line-height: 1.5;
+  }
+  #legend button {
+    margin-top: 6px;
+    font-size: 11px;
+    padding: 4px 8px;
+    cursor: pointer;
+  }
+
+  .maplibregl-popup-content {
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 10px 14px;
+  }
+  .maplibregl-popup-content strong { font-size: 13px; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<div id="legend">
+  <h3>Chicago Bike Network &mdash; Dec 2025</h3>
+  <label class="row"><input type="checkbox" data-facility="Protected Bike Lane" checked disabled><span class="swatch pbl"></span><span class="label">Protected Bike Lane</span></label>
+  <label class="row off"><input type="checkbox" data-facility="Neighborhood Greenway" disabled><span class="swatch green"></span><span class="label">Neighborhood Greenway</span></label>
+  <label class="row"><input type="checkbox" data-facility="Buffered Bike Lane" checked disabled><span class="swatch buff"></span><span class="label">Buffered Bike Lane</span></label>
+  <label class="row"><input type="checkbox" data-facility="Bike Lane" checked disabled><span class="swatch lane"></span><span class="label">Bike Lane</span></label>
+</div>
+
+<script>
+const FEATURE_SERVICE_URL =
+  'https://services7.arcgis.com/A03QrhyHnDaUmK0W/arcgis/rest/services/' +
+  'Dec2025_Bike_Network_Internal_Basemap/FeatureServer/0/query' +
+  '?where=1%3D1&outFields=*&outSR=4326&f=geojson';
+
+const PROPOSED_PBLS_URL = './proposed-pbls.geojson';
+
+const escapeHtml = (value) => String(value)
+  .replaceAll('&', '&amp;')
+  .replaceAll('<', '&lt;')
+  .replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;')
+  .replaceAll("'", '&#39;');
+
+// Colors lifted straight from the WebMap's CIM symbology.
+const PBL_COLOR  = '#22CBDE';
+const PBL_CASING = '#221C4C';
+const GREENWAY_COLOR = '#2FB13F';
+const LANE_COLOR = '#2CBDEE';
+
+const map = new maplibregl.Map({
+  container: 'map',
+  style: {
+    version: 8,
+    sources: {
+      carto: {
+        type: 'raster',
+        tiles: [
+          'https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+          'https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+          'https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+          'https://d.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png'
+        ],
+        tileSize: 256,
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ' +
+          '&copy; <a href="https://carto.com/attributions">CARTO</a> &middot; ' +
+          'Bike data: <a href="https://www.chicago.gov/city/en/sites/complete-streets-chicago/home/bike-program/existing-bike-network.html">CDOT</a>'
+      }
+    },
+    layers: [{ id: 'basemap', type: 'raster', source: 'carto' }]
+  },
+  center: [-87.65, 41.88],
+  zoom: 11
+});
+
+map.addControl(new maplibregl.NavigationControl(), 'top-right');
+map.addControl(new maplibregl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
+
+map.on('load', async () => {
+  const response = await fetch(FEATURE_SERVICE_URL);
+  if (!response.ok) {
+    alert('Failed to load Chicago bike network: ' + response.status);
+    return;
+  }
+  const geojson = await response.json();
+  console.log('Loaded ' + (geojson.features || []).length + ' bike network segments');
+
+  map.addSource('bike-network', { type: 'geojson', data: geojson });
+
+  // PBL has a dark casing rendered first so the cyan color line sits on top of it.
+  map.addLayer({
+    id: 'pbl-casing',
+    type: 'line',
+    source: 'bike-network',
+    filter: ['==', ['get', 'BIKE_DSPLY'], 'Protected Bike Lane'],
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    paint: { 'line-color': PBL_CASING, 'line-width': 5 }
+  });
+
+  map.addLayer({
+    id: 'bike-lane',
+    type: 'line',
+    source: 'bike-network',
+    filter: ['==', ['get', 'BIKE_DSPLY'], 'Bike Lane'],
+    layout: { 'line-cap': 'butt', 'line-join': 'round' },
+    paint: { 'line-color': LANE_COLOR, 'line-width': 2, 'line-dasharray': [3, 2] }
+  });
+  map.addLayer({
+    id: 'buffered-lane',
+    type: 'line',
+    source: 'bike-network',
+    filter: ['==', ['get', 'BIKE_DSPLY'], 'Buffered Bike Lane'],
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    paint: { 'line-color': LANE_COLOR, 'line-width': 3.5 }
+  });
+  // Neighborhood Greenway: simple solid green single line (no casing).
+  map.addLayer({
+    id: 'greenway',
+    type: 'line',
+    source: 'bike-network',
+    filter: ['==', ['get', 'BIKE_DSPLY'], 'Neighborhood Greenway'],
+    layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' },
+    paint: { 'line-color': GREENWAY_COLOR, 'line-width': 2 }
+  });
+  map.addLayer({
+    id: 'pbl',
+    type: 'line',
+    source: 'bike-network',
+    filter: ['==', ['get', 'BIKE_DSPLY'], 'Protected Bike Lane'],
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    paint: { 'line-color': PBL_COLOR, 'line-width': 3 }
+  });
+
+  // Proposed PBLs — loaded from a sibling file. Same source as existing PBLs
+  // styling-wise, just rendered as their own layer so a missing file doesn't
+  // break anything.
+  let proposedPbls = { type: 'FeatureCollection', features: [] };
+  try {
+    const proposedRes = await fetch(PROPOSED_PBLS_URL, { cache: 'no-cache' });
+    if (proposedRes.ok) {
+      proposedPbls = await proposedRes.json();
+      console.log('Loaded ' + (proposedPbls.features || []).length + ' proposed PBLs');
+    }
+  } catch (err) {
+    console.warn('Could not load proposed-pbls.geojson:', err);
+  }
+
+  map.addSource('proposed-pbls', { type: 'geojson', data: proposedPbls });
+  map.addLayer({
+    id: 'proposed-pbl-casing',
+    type: 'line',
+    source: 'proposed-pbls',
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    paint: { 'line-color': PBL_CASING, 'line-width': 5 }
+  });
+  map.addLayer({
+    id: 'proposed-pbl',
+    type: 'line',
+    source: 'proposed-pbls',
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    paint: { 'line-color': PBL_COLOR, 'line-width': 3 }
+  });
+
+  // Popup on click — single map-level handler so overlapping features only
+  // produce one popup (the topmost). Same handler manages the cursor.
+  const clickableLayers = ['bike-lane', 'buffered-lane', 'greenway', 'pbl', 'proposed-pbl'];
+
+  map.on('click', (e) => {
+    const features = map.queryRenderedFeatures(e.point, { layers: clickableLayers });
+    if (features.length === 0) return;
+    const attrs = features[0].properties;
+    const isProposed = attrs.PROPOSED === true || attrs.PROPOSED === 'true';
+
+    const street = escapeHtml(attrs.ST_STREET || '(unnamed)');
+    const facility = escapeHtml(attrs.BIKE_DSPLY || 'Protected Bike Lane');
+    const from = escapeHtml(attrs.ST_FROM || '?');
+    const to = escapeHtml(attrs.ST_TO || '?');
+
+    let footer = '';
+    if (isProposed) {
+      const note = attrs.note ? '<br>' + escapeHtml(attrs.note) : '';
+      footer = '<small><em>Proposed</em>' + note + '</small>';
+    } else {
+      const month = escapeHtml(attrs.BW_INST_MO || '?');
+      const year = escapeHtml(attrs.BW_INST_YR || '?');
+      const miles = Number(attrs.ST_CL_MI || 0).toFixed(2);
+      footer = '<small>Installed ' + month + '/' + year + ' &middot; ' + miles + ' mi</small>';
+    }
+
+    const html =
+      '<strong>' + street + '</strong><br>' +
+      facility + '<br>' +
+      from + ' &rarr; ' + to + '<br>' +
+      footer;
+
+    new maplibregl.Popup({ closeButton: true })
+      .setLngLat(e.lngLat)
+      .setHTML(html)
+      .addTo(map);
+  });
+
+  map.on('mousemove', (e) => {
+    const features = map.queryRenderedFeatures(e.point, { layers: clickableLayers });
+    map.getCanvas().style.cursor = features.length > 0 ? 'pointer' : '';
+  });
+
+  // --- Facility-type show/hide toggles ---
+  // Each facility type may map to multiple MapLibre layers (PBL has a casing
+  // layer beneath its color layer, plus the proposed-PBL casing/color pair).
+  const facilityLayerIds = {
+    'Protected Bike Lane':   ['pbl-casing', 'pbl', 'proposed-pbl-casing', 'proposed-pbl'],
+    'Neighborhood Greenway': ['greenway'],
+    'Buffered Bike Lane':    ['buffered-lane'],
+    'Bike Lane':             ['bike-lane']
+  };
+
+  const checkboxes = document.querySelectorAll('#legend input[type="checkbox"]');
+  for (const checkbox of checkboxes) {
+    checkbox.addEventListener('change', (event) => {
+      const facility = event.target.dataset.facility;
+      const visible = event.target.checked;
+      const layerIds = facilityLayerIds[facility] || [];
+      for (const layerId of layerIds) {
+        map.setLayoutProperty(layerId, 'visibility', visible ? 'visible' : 'none');
+      }
+      // Dim the legend row when its layer is hidden.
+      event.target.closest('.row').classList.toggle('off', !visible);
+    });
+    // Now that the listener is attached and layers exist, accept input.
+    checkbox.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
