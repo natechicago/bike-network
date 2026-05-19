@@ -47,6 +47,7 @@
   #legend .swatch.green   { background: #2FB13F; }
   #legend .swatch.buff    { height: 5px; background: #2CBDEE; }
   #legend .swatch.lane    { background: repeating-linear-gradient(90deg, #2CBDEE 0 5px, transparent 5px 8px); }
+  #legend .swatch.crime   { height: 10px; background: #ff4d4d; opacity: 0.45; border: 1px solid #b30000; }
 
   #legend .footnote {
     margin-top: 10px;
@@ -80,6 +81,9 @@
   <label class="row off"><input type="checkbox" data-facility="Neighborhood Greenway" disabled><span class="swatch green"></span><span class="label">Neighborhood Greenway</span></label>
   <label class="row"><input type="checkbox" data-facility="Buffered Bike Lane" checked disabled><span class="swatch buff"></span><span class="label">Buffered Bike Lane</span></label>
   <label class="row"><input type="checkbox" data-facility="Bike Lane" checked disabled><span class="swatch lane"></span><span class="label">Bike Lane</span></label>
+  <div class="footnote">
+    <label class="row"><input type="checkbox" id="toggle-crime" checked><span class="swatch crime"></span><span class="label">High violent crime (top 5 tiers, 2005)</span></label>
+  </div>
 </div>
 
 <script>
@@ -89,6 +93,7 @@ const FEATURE_SERVICE_URL =
   '?where=1%3D1&outFields=*&outSR=4326&f=geojson';
 
 const PROPOSED_PBLS_URL = './proposed-pbls.geojson';
+const HIGH_CRIME_URL   = './high-crime-neighborhoods.geojson';
 
 const escapeHtml = (value) => String(value)
   .replaceAll('&', '&amp;')
@@ -142,6 +147,40 @@ map.addControl(
 map.addControl(new maplibregl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
 
 map.on('load', async () => {
+  // Load high-crime neighborhoods first so their fill layer sits beneath the
+  // bike-network lines.
+  let highCrime = { type: 'FeatureCollection', features: [] };
+  try {
+    const crimeRes = await fetch(HIGH_CRIME_URL, { cache: 'no-cache' });
+    if (crimeRes.ok) {
+      highCrime = await crimeRes.json();
+      console.log('Loaded ' + (highCrime.features || []).length + ' high-crime neighborhoods');
+    }
+  } catch (err) {
+    console.warn('Could not load high-crime-neighborhoods.geojson:', err);
+  }
+  map.addSource('high-crime', { type: 'geojson', data: highCrime });
+  map.addLayer({
+    id: 'high-crime-fill',
+    type: 'fill',
+    source: 'high-crime',
+    paint: {
+      'fill-color': '#ff4d4d',
+      'fill-opacity': 0.28
+    }
+  });
+  map.addLayer({
+    id: 'high-crime-outline',
+    type: 'line',
+    source: 'high-crime',
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    paint: {
+      'line-color': '#b30000',
+      'line-width': 1,
+      'line-opacity': 0.5
+    }
+  });
+
   const response = await fetch(FEATURE_SERVICE_URL);
   if (!response.ok) {
     alert('Failed to load Chicago bike network: ' + response.status);
@@ -279,7 +318,7 @@ map.on('load', async () => {
     'Bike Lane':             ['bike-lane']
   };
 
-  const checkboxes = document.querySelectorAll('#legend input[type="checkbox"]');
+  const checkboxes = document.querySelectorAll('#legend input[type="checkbox"][data-facility]');
   for (const checkbox of checkboxes) {
     checkbox.addEventListener('change', (event) => {
       const facility = event.target.dataset.facility;
@@ -294,6 +333,31 @@ map.on('load', async () => {
     // Now that the listener is attached and layers exist, accept input.
     checkbox.disabled = false;
   }
+
+  // High-crime overlay toggle.
+  const crimeToggle = document.getElementById('toggle-crime');
+  crimeToggle.addEventListener('change', (event) => {
+    const visible = event.target.checked;
+    map.setLayoutProperty('high-crime-fill', 'visibility', visible ? 'visible' : 'none');
+    map.setLayoutProperty('high-crime-outline', 'visibility', visible ? 'visible' : 'none');
+    event.target.closest('.row').classList.toggle('off', !visible);
+  });
+
+  // Click popup for the high-crime fill so users can see the tier.
+  map.on('click', 'high-crime-fill', (e) => {
+    const f = e.features[0];
+    const name = escapeHtml(f.properties.COMMUNITY || '');
+    const tier = escapeHtml(f.properties.tier || '?');
+    const label = escapeHtml(f.properties.tier_label || '');
+    new maplibregl.Popup()
+      .setLngLat(e.lngLat)
+      .setHTML(
+        '<strong>' + name + '</strong><br>' +
+        '<small>Violent crime tier ' + tier + ' &middot; ' + label + ' per 100k<br>' +
+        '(2005 Chicago Police data)</small>'
+      )
+      .addTo(map);
+  });
 });
 </script>
 </body>
