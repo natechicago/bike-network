@@ -179,17 +179,6 @@ map.on('load', async () => {
       'fill-opacity': 0.22
     }
   });
-  map.addLayer({
-    id: 'high-crime-outline',
-    type: 'line',
-    source: 'high-crime',
-    layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' },
-    paint: {
-      'line-color': '#d97070',
-      'line-width': 0.8,
-      'line-opacity': 0.6
-    }
-  });
 
   const response = await fetch(FEATURE_SERVICE_URL);
   if (!response.ok) {
@@ -386,7 +375,6 @@ map.on('load', async () => {
   crimeToggle.addEventListener('change', (event) => {
     const visible = event.target.checked;
     map.setLayoutProperty('high-crime-fill', 'visibility', visible ? 'visible' : 'none');
-    map.setLayoutProperty('high-crime-outline', 'visibility', visible ? 'visible' : 'none');
     event.target.closest('.row').classList.toggle('off', !visible);
   });
 
