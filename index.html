@@ -47,6 +47,7 @@
   #legend .swatch.green   { background: #2FB13F; }
   #legend .swatch.buff    { height: 5px; background: #2CBDEE; }
   #legend .swatch.lane    { background: repeating-linear-gradient(90deg, #2CBDEE 0 5px, transparent 5px 8px); }
+  #legend .swatch.trail   { height: 5px; background: #196a3a; }
   #legend .swatch.crime   { height: 10px; background: #ff8a8a; opacity: 0.7; border: 1px solid #d97070; }
 
   #legend .footnote {
@@ -81,6 +82,7 @@
   <label class="row off"><input type="checkbox" data-facility="Neighborhood Greenway" disabled><span class="swatch green"></span><span class="label">Greenway</span></label>
   <label class="row"><input type="checkbox" data-facility="Buffered Bike Lane" checked disabled><span class="swatch buff"></span><span class="label">Buffered</span></label>
   <label class="row"><input type="checkbox" data-facility="Bike Lane" checked disabled><span class="swatch lane"></span><span class="label">Standard</span></label>
+  <label class="row off"><input type="checkbox" data-facility="Off-Street Trail" disabled><span class="swatch trail"></span><span class="label">Off-Street Trail</span></label>
   <div class="footnote">
     <label class="row off"><input type="checkbox" id="toggle-crime"><span class="swatch crime"></span><span class="label">Crime</span></label>
   </div>
@@ -90,6 +92,11 @@
 const FEATURE_SERVICE_URL =
   'https://services7.arcgis.com/A03QrhyHnDaUmK0W/arcgis/rest/services/' +
   'Dec2025_Bike_Network_Internal_Basemap/FeatureServer/0/query' +
+  '?where=1%3D1&outFields=*&outSR=4326&f=geojson';
+
+const TRAILS_URL =
+  'https://services7.arcgis.com/A03QrhyHnDaUmK0W/arcgis/rest/services/' +
+  'Trails_Network_2024_11_18/FeatureServer/0/query' +
   '?where=1%3D1&outFields=*&outSR=4326&f=geojson';
 
 const PROPOSED_PBLS_URL = './proposed-pbls.geojson';
@@ -107,6 +114,7 @@ const PBL_COLOR  = '#22CBDE';
 const PBL_CASING = '#221C4C';
 const GREENWAY_COLOR = '#2FB13F';
 const LANE_COLOR = '#2CBDEE';
+const TRAIL_COLOR = '#196a3a';
 
 const map = new maplibregl.Map({
   container: 'map',
@@ -236,6 +244,25 @@ map.on('load', async () => {
     paint: { 'line-color': PBL_COLOR, 'line-width': 3 }
   });
 
+  // Off-street trails — separate feature service, different schema.
+  try {
+    const trailsRes = await fetch(TRAILS_URL);
+    if (trailsRes.ok) {
+      const trailsGeo = await trailsRes.json();
+      console.log('Loaded ' + (trailsGeo.features || []).length + ' off-street trail segments');
+      map.addSource('off-street-trails', { type: 'geojson', data: trailsGeo });
+      map.addLayer({
+        id: 'off-street-trail',
+        type: 'line',
+        source: 'off-street-trails',
+        layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' },
+        paint: { 'line-color': TRAIL_COLOR, 'line-width': 3 }
+      });
+    }
+  } catch (err) {
+    console.warn('Could not load off-street trails:', err);
+  }
+
   // Proposed PBLs — loaded from a sibling file. Same source as existing PBLs
   // styling-wise, just rendered as their own layer so a missing file doesn't
   // break anything.
@@ -266,49 +293,6 @@ map.on('load', async () => {
     paint: { 'line-color': PBL_COLOR, 'line-width': 3 }
   });
 
-  // Popup on click — single map-level handler so overlapping features only
-  // produce one popup (the topmost). Same handler manages the cursor.
-  const clickableLayers = ['bike-lane', 'buffered-lane', 'greenway', 'pbl', 'proposed-pbl'];
-
-  map.on('click', (e) => {
-    const features = map.queryRenderedFeatures(e.point, { layers: clickableLayers });
-    if (features.length === 0) return;
-    const attrs = features[0].properties;
-    const isProposed = attrs.PROPOSED === true || attrs.PROPOSED === 'true';
-
-    const street = escapeHtml(attrs.ST_STREET || '(unnamed)');
-    const facility = escapeHtml(attrs.BIKE_DSPLY || 'Protected Bike Lane');
-    const from = escapeHtml(attrs.ST_FROM || '?');
-    const to = escapeHtml(attrs.ST_TO || '?');
-
-    let footer = '';
-    if (isProposed) {
-      const note = attrs.note ? '<br>' + escapeHtml(attrs.note) : '';
-      footer = '<small><em>Proposed</em>' + note + '</small>';
-    } else {
-      const month = escapeHtml(attrs.BW_INST_MO || '?');
-      const year = escapeHtml(attrs.BW_INST_YR || '?');
-      const miles = Number(attrs.ST_CL_MI || 0).toFixed(2);
-      footer = '<small>Installed ' + month + '/' + year + ' &middot; ' + miles + ' mi</small>';
-    }
-
-    const html =
-      '<strong>' + street + '</strong><br>' +
-      facility + '<br>' +
-      from + ' &rarr; ' + to + '<br>' +
-      footer;
-
-    new maplibregl.Popup({ closeButton: true })
-      .setLngLat(e.lngLat)
-      .setHTML(html)
-      .addTo(map);
-  });
-
-  map.on('mousemove', (e) => {
-    const features = map.queryRenderedFeatures(e.point, { layers: clickableLayers });
-    map.getCanvas().style.cursor = features.length > 0 ? 'pointer' : '';
-  });
-
   // --- Facility-type show/hide toggles ---
   // Each facility type may map to multiple MapLibre layers (PBL has a casing
   // layer beneath its color layer, plus the proposed-PBL casing/color pair).
@@ -316,7 +300,8 @@ map.on('load', async () => {
     'Protected Bike Lane':   ['pbl-casing', 'pbl', 'proposed-pbl-casing', 'proposed-pbl'],
     'Neighborhood Greenway': ['greenway'],
     'Buffered Bike Lane':    ['buffered-lane'],
-    'Bike Lane':             ['bike-lane']
+    'Bike Lane':             ['bike-lane'],
+    'Off-Street Trail':      ['off-street-trail']
   };
 
   const checkboxes = document.querySelectorAll('#legend input[type="checkbox"][data-facility]');
