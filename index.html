@@ -47,7 +47,7 @@
   #legend .swatch.green   { background: #2FB13F; }
   #legend .swatch.buff    { height: 5px; background: #2CBDEE; }
   #legend .swatch.lane    { background: repeating-linear-gradient(90deg, #2CBDEE 0 5px, transparent 5px 8px); }
-  #legend .swatch.crime   { height: 10px; background: #ffb3b3; opacity: 0.6; border: 1px solid #e8a8a8; }
+  #legend .swatch.crime   { height: 10px; background: #ff8a8a; opacity: 0.7; border: 1px solid #d97070; }
 
   #legend .footnote {
     margin-top: 10px;
@@ -82,7 +82,7 @@
   <label class="row"><input type="checkbox" data-facility="Buffered Bike Lane" checked disabled><span class="swatch buff"></span><span class="label">Buffered</span></label>
   <label class="row"><input type="checkbox" data-facility="Bike Lane" checked disabled><span class="swatch lane"></span><span class="label">Standard</span></label>
   <div class="footnote">
-    <label class="row"><input type="checkbox" id="toggle-crime" checked><span class="swatch crime"></span><span class="label">Crime</span></label>
+    <label class="row off"><input type="checkbox" id="toggle-crime"><span class="swatch crime"></span><span class="label">Crime</span></label>
   </div>
 </div>
 
@@ -164,20 +164,21 @@ map.on('load', async () => {
     id: 'high-crime-fill',
     type: 'fill',
     source: 'high-crime',
+    layout: { visibility: 'none' },
     paint: {
-      'fill-color': '#ffb3b3',
-      'fill-opacity': 0.18
+      'fill-color': '#ff8a8a',
+      'fill-opacity': 0.22
     }
   });
   map.addLayer({
     id: 'high-crime-outline',
     type: 'line',
     source: 'high-crime',
-    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' },
     paint: {
-      'line-color': '#e8a8a8',
+      'line-color': '#d97070',
       'line-width': 0.8,
-      'line-opacity': 0.55
+      'line-opacity': 0.6
     }
   });
 
