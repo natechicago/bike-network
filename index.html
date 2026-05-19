@@ -48,6 +48,9 @@
   #legend .swatch.buff    { height: 5px; background: #2CBDEE; }
   #legend .swatch.lane    { background: repeating-linear-gradient(90deg, #2CBDEE 0 5px, transparent 5px 8px); }
   #legend .swatch.trail   { height: 5px; background: #196a3a; }
+  #legend .swatch.trail2  { height: 5px; background: #9c4dcc; }
+  .maplibregl-popup-content { font-size: 12px; line-height: 1.5; padding: 10px 14px; }
+  .maplibregl-popup-content strong { font-size: 13px; }
   #legend .swatch.crime   { height: 10px; background: #ff8a8a; opacity: 0.7; border: 1px solid #d97070; }
 
   #legend .footnote {
@@ -77,6 +80,7 @@
   <label class="row"><input type="checkbox" data-facility="Buffered Bike Lane" checked disabled><span class="swatch buff"></span><span class="label">Buffered</span></label>
   <label class="row"><input type="checkbox" data-facility="Bike Lane" checked disabled><span class="swatch lane"></span><span class="label">Standard</span></label>
   <label class="row off"><input type="checkbox" data-facility="Off-Street Trail" disabled><span class="swatch trail"></span><span class="label">Off-Street Trail</span></label>
+  <label class="row"><input type="checkbox" data-facility="Trails v2" checked disabled><span class="swatch trail2"></span><span class="label">Trails v2</span></label>
   <div class="footnote">
     <label class="row off"><input type="checkbox" id="toggle-crime"><span class="swatch crime"></span><span class="label">Crime</span></label>
   </div>
@@ -93,6 +97,15 @@ const TRAILS_URL =
   'Trails_Network_2024_11_18/FeatureServer/0/query' +
   '?where=1%3D1&outFields=*&outSR=4326&f=geojson';
 
+const TRAILS_V2_URL = './trails-v2.geojson';
+
+const escapeHtml = (value) => String(value)
+  .replaceAll('&', '&amp;')
+  .replaceAll('<', '&lt;')
+  .replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;')
+  .replaceAll("'", '&#39;');
+
 const PROPOSED_PBLS_URL = './proposed-pbls.geojson';
 const HIGH_CRIME_URL   = './high-crime-neighborhoods.geojson';
 
@@ -102,6 +115,7 @@ const PBL_CASING = '#221C4C';
 const GREENWAY_COLOR = '#2FB13F';
 const LANE_COLOR = '#2CBDEE';
 const TRAIL_COLOR = '#196a3a';
+const TRAILS_V2_COLOR = '#9c4dcc';
 
 const map = new maplibregl.Map({
   container: 'map',
@@ -237,6 +251,20 @@ map.on('load', async () => {
     if (trailsRes.ok) {
       const trailsGeo = await trailsRes.json();
       console.log('Loaded ' + (trailsGeo.features || []).length + ' off-street trail segments');
+
+      // Compute total mileage per ST_NAME so the popup can show the full
+      // trail length rather than just the clicked segment.
+      const totalsByName = {};
+      for (const f of trailsGeo.features || []) {
+        const n = (f.properties && f.properties.ST_NAME) || '';
+        const m = Number((f.properties && f.properties.MI_CTRLINE) || 0);
+        totalsByName[n] = (totalsByName[n] || 0) + m;
+      }
+      for (const f of trailsGeo.features || []) {
+        const n = (f.properties && f.properties.ST_NAME) || '';
+        f.properties._total_mi = Number((totalsByName[n] || 0).toFixed(2));
+      }
+
       map.addSource('off-street-trails', { type: 'geojson', data: trailsGeo });
       map.addLayer({
         id: 'off-street-trail',
@@ -249,6 +277,51 @@ map.on('load', async () => {
   } catch (err) {
     console.warn('Could not load off-street trails:', err);
   }
+
+  // Trails v2 — sibling GeoJSON with longer Chicagoland trails sourced from OSM.
+  try {
+    const t2Res = await fetch(TRAILS_V2_URL, { cache: 'no-cache' });
+    if (t2Res.ok) {
+      const t2Geo = await t2Res.json();
+      console.log('Loaded ' + (t2Geo.features || []).length + ' Trails v2 features');
+      map.addSource('trails-v2', { type: 'geojson', data: t2Geo });
+      map.addLayer({
+        id: 'trails-v2',
+        type: 'line',
+        source: 'trails-v2',
+        layout: { 'line-cap': 'round', 'line-join': 'round' },
+        paint: { 'line-color': TRAILS_V2_COLOR, 'line-width': 3 }
+      });
+    }
+  } catch (err) {
+    console.warn('Could not load trails-v2:', err);
+  }
+
+  // Click popup — trails only. Single map-level handler so overlapping
+  // features only produce one popup.
+  const trailClickLayers = ['off-street-trail', 'trails-v2'];
+  map.on('click', (e) => {
+    const features = map.queryRenderedFeatures(e.point, { layers: trailClickLayers });
+    if (features.length === 0) return;
+    const f = features[0];
+    const a = f.properties || {};
+    let name, miles;
+    if (f.layer.id === 'trails-v2') {
+      name = a.name || '(unnamed)';
+      miles = Number(a.length_mi || 0).toFixed(1);
+    } else {
+      name = a.ST_NAME || '(unnamed)';
+      miles = Number(a._total_mi || 0).toFixed(1);
+    }
+    const html =
+      '<strong>' + escapeHtml(name) + '</strong><br>' +
+      '<small>' + miles + ' mi total</small>';
+    new maplibregl.Popup().setLngLat(e.lngLat).setHTML(html).addTo(map);
+  });
+  map.on('mousemove', (e) => {
+    const features = map.queryRenderedFeatures(e.point, { layers: trailClickLayers });
+    map.getCanvas().style.cursor = features.length > 0 ? 'pointer' : '';
+  });
 
   // Proposed PBLs — loaded from a sibling file. Same source as existing PBLs
   // styling-wise, just rendered as their own layer so a missing file doesn't
@@ -288,7 +361,8 @@ map.on('load', async () => {
     'Neighborhood Greenway': ['greenway'],
     'Buffered Bike Lane':    ['buffered-lane'],
     'Bike Lane':             ['bike-lane'],
-    'Off-Street Trail':      ['off-street-trail']
+    'Off-Street Trail':      ['off-street-trail'],
+    'Trails v2':             ['trails-v2']
   };
 
   const checkboxes = document.querySelectorAll('#legend input[type="checkbox"][data-facility]');
