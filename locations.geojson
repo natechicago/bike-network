@@ -1,0 +1,2000 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6528788,
+          41.9087311
+        ]
+      },
+      "properties": {
+        "name": "Whole Foods Market Lincoln Park / Kingsbury",
+        "address": "1550 N Kingsbury St, Chicago, IL 60642",
+        "area": "Lincoln Park / North & Clybourn / by the river",
+        "why_good": "Big fancy Whole Foods with a really nice second level, tons of seating, and outdoor seating.",
+        "notes": "Nate says it's a really good spot for remote work.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6420969,
+          41.9450761
+        ]
+      },
+      "properties": {
+        "name": "Rooftop of Nate's building",
+        "address": "3450 N Lake Shore Dr, Chicago, IL 60657",
+        "area": "Home / building rooftop",
+        "why_good": "Extremely close and likely pleasant for outdoor work when weather allows.",
+        "notes": "Added from Nate's note.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.657322,
+          41.9396851
+        ]
+      },
+      "properties": {
+        "name": "Osmium Coffee Bar",
+        "address": "1117 W Belmont Ave, Chicago, IL 60657",
+        "area": "Lakeview / Belmont",
+        "why_good": "Coffee shop Nate wants to remember as a remote work location.",
+        "notes": "Dark Matter Coffee shop on Belmont.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6441813,
+          41.9382563
+        ]
+      },
+      "properties": {
+        "name": "Intelligentsia Coffee — Lakeview",
+        "address": "3123 N Broadway, Chicago, IL 60657",
+        "area": "Lakeview East / Broadway",
+        "why_good": "Classic Lakeview coffee bar with serious coffee, steady neighborhood traffic, and a laptop-normal café feel.",
+        "notes": "More polished/specialty-coffee than cozy, but useful as a reliable Lakeview work stop.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6537373,
+          41.9397945
+        ]
+      },
+      "properties": {
+        "name": "Chicago Bagel Authority — Belmont",
+        "address": "955 W Belmont Ave, Chicago, IL 60657",
+        "area": "Lakeview / Belmont",
+        "why_good": "Steamed-bagel sandwich institution right by Belmont, with casual neighborhood energy and good food anchor for a work session.",
+        "notes": "More food-counter than cozy café; best for a shorter laptop session around breakfast/lunch.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.655186,
+          41.9400767
+        ]
+      },
+      "properties": {
+        "name": "Ancient Grounds",
+        "address": "1022 W Belmont Ave, Chicago, IL 60657",
+        "area": "Lakeview / Belmont",
+        "why_good": "Cozy café with exposed brick/copper-ceiling warmth, creative drinks, and clear signals that people use it to get work done.",
+        "notes": "Strong Lakeview candidate; likely better off-peak because novelty drinks/coffee flights can draw a crowd.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6496329,
+          41.9579418
+        ]
+      },
+      "properties": {
+        "name": "Dollop Coffee — Buena Park / Uptown",
+        "address": "4181 N Clarendon Ave, Chicago, IL 60613",
+        "area": "Buena Park / Uptown, near Broadway",
+        "why_good": "Cozy neighborhood Dollop location with regulars energy and a back-room vibe; multiple mentions say it works well for remote work.",
+        "notes": "This is the former \"Dollop on Broadway\" placeholder Nate mentioned.",
+        "category": "WFH",
+        "favorite": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6248023,
+          41.8838628
+        ]
+      },
+      "properties": {
+        "name": "Chicago Cultural Center",
+        "address": "78 E Washington St, Chicago, IL 60602",
+        "area": "Loop / Millennium Park",
+        "why_good": "Beautiful public building with free seating areas, Wi-Fi, art/architecture, and a big public-work fallback area near the lobby.",
+        "notes": "Not a café, but a strong downtown noncommercial work spot; good after grabbing coffee nearby.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6329821,
+          41.891847
+        ]
+      },
+      "properties": {
+        "name": "Moxy Chicago Downtown — Hotel Lobby",
+        "address": "530 N LaSalle Dr, Chicago, IL 60654",
+        "area": "River North / Streeterville-ish downtown option",
+        "why_good": "Stylish hotel lobby / Bar Moxy setup with lounge seating, social energy, and a known lobby-mixer/work-adjacent vibe.",
+        "notes": "Nate called this Streeterville; actual address appears to be River North. Good downtown hotel-lobby scout.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6273201,
+          41.8922764
+        ]
+      },
+      "properties": {
+        "name": "Freehand Chicago — Lobby / Café Integral / Broken Shaker",
+        "address": "19 E Ohio St, Chicago, IL 60611",
+        "area": "River North",
+        "why_good": "Warm, quirky boutique/hostel hotel lobby with coffee shop, Broken Shaker, and a cozy fireplace nook people specifically mention for laptop work.",
+        "notes": "Strong Moxy-like pick; best for cozy downtown work with more personality than a corporate lobby.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6491365,
+          41.8858848
+        ]
+      },
+      "properties": {
+        "name": "The Hoxton Chicago — Lobby / Cira",
+        "address": "200 N Green St, Chicago, IL 60607",
+        "area": "Fulton Market / West Loop",
+        "why_good": "Stylish hotel lobby/restaurant/café ecosystem with creative crowd energy, comfortable lounge feel, and lots of third-place potential.",
+        "notes": "Bigger and more polished than Moxy, but still social/warm rather than sterile.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6518093,
+          41.8874771
+        ]
+      },
+      "properties": {
+        "name": "The Emily Hotel — Lobby / Coffee Bar",
+        "address": "311 N Morgan St, Chicago, IL 60607",
+        "area": "Fulton Market / West Loop",
+        "why_good": "Former Ace Hotel with artist-driven design, lively common areas, and a lobby-level coffee bar.",
+        "notes": "Strong \"cool people with laptops\" signal; good West Loop hotel-lobby scout.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6652892,
+          41.8798513
+        ]
+      },
+      "properties": {
+        "name": "Froth",
+        "address": "1515 W Monroe St, Chicago, IL 60607",
+        "area": "West Loop / Near West Side",
+        "why_good": "Quiet café inside The Duncan with an old-library-ish lobby feel and strong remote-work mentions.",
+        "notes": "Farther from Nate's core north-side orbit, but unusually good for long/late sessions because the broader lobby remains accessible.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6500401,
+          41.8862659
+        ]
+      },
+      "properties": {
+        "name": "Good Ambler",
+        "address": "216 N Peoria St, Chicago, IL 60607",
+        "area": "West Loop / Fulton Market",
+        "why_good": "Spacious bakery/café/chocolatier with a laid-back West Loop vibe, plenty of seating, and explicit work-friendly mentions.",
+        "notes": "Good West Loop add; bigger and more polished than cozy, but very usable for laptop time.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.628314,
+          41.9059879
+        ]
+      },
+      "properties": {
+        "name": "Ambassador Hotel Lobby",
+        "address": "1301 N State Pkwy, Chicago, IL 60610",
+        "area": "Gold Coast",
+        "why_good": "Hotel lobby with high ceilings, fireplace/cozy-lobby energy, and Moxy-ish public-living-room potential.",
+        "notes": "Strong hotel-lobby scout; best on cooler days when the fireplace/lobby vibe is doing the work.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6235965,
+          41.9001623
+        ]
+      },
+      "properties": {
+        "name": "Espression by Lavazza / The Drake Hotel",
+        "address": "140 E Walton St, Chicago, IL 60611",
+        "area": "Gold Coast / Magnificent Mile",
+        "why_good": "Italian-style espresso café inside The Drake, with the hotel's public nooks and grand old-school spaces nearby for settling in.",
+        "notes": "Café itself may be less cozy; the real candidate is the combined Drake public-space setup.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6540447,
+          41.921464
+        ]
+      },
+      "properties": {
+        "name": "Olor Coffee Bar",
+        "address": "1013 W Webster Ave, Chicago, IL 60614",
+        "area": "Lincoln Park / DePaul",
+        "why_good": "Swedish-inspired coffee bar with sleek wood tables, minimalist warmth, and cozy rainy-day energy.",
+        "notes": "Good Lincoln Park scout; more calm/minimal than plush.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6491808,
+          41.932846
+        ]
+      },
+      "properties": {
+        "name": "Cafe Deko",
+        "address": "800 W Diversey Pkwy, Chicago, IL 60614",
+        "area": "Lakeview / Lincoln Park edge",
+        "why_good": "Stylish neighborhood café with comfortable seating, good work-café signals, and a polished but still warm feel.",
+        "notes": "Strong nearby add; useful when Nate wants a Lakeview/Lincoln Park option that is prettier than generic coffee.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.66596,
+          41.9375469
+        ]
+      },
+      "properties": {
+        "name": "Queen B",
+        "address": "3072 N Lincoln Ave, Chicago, IL 60657",
+        "area": "Lakeview / Lincoln Ave",
+        "why_good": "Quiet, comfortable café with adequate seating, group-study signal, and dog-friendly note.",
+        "notes": "Useful quiet-work candidate close to the Lakeview/Lincoln corridor.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6663067,
+          41.9376222
+        ]
+      },
+      "properties": {
+        "name": "Doppio Coffee House",
+        "address": "3054 N Greenview Ave, Chicago, IL 60657",
+        "area": "Lakeview / Greenview",
+        "why_good": "Cozy neighborhood coffeehouse with fast connection, adequate seating, and variable zones.",
+        "notes": "Good nearby scout when Nate wants cozy but not dead-silent.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6769222,
+          41.9035978
+        ]
+      },
+      "properties": {
+        "name": "Colectivo Coffee — Wicker Park",
+        "address": "1211 N Damen Ave, Chicago, IL 60622",
+        "area": "Wicker Park / Damen",
+        "why_good": "Cozy/lively café with fireplace and upper-level seating, long work tables, and strong laptop-normal signals.",
+        "notes": "Chain-ish, but a very practical Wicker Park work option.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6205825,
+          41.8987338
+        ]
+      },
+      "properties": {
+        "name": "Dollop Coffee — Gold Coast",
+        "address": "860 N Dewitt Pl, Chicago, IL 60611",
+        "area": "Gold Coast / Streeterville edge",
+        "why_good": "Quiet-corner Dollop with cozy lobby-style seating, bookshelves, outdoor patio under trees, and solo-work mentions.",
+        "notes": "Strong Gold Coast add; good for a quieter escape near Michigan Ave.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6787865,
+          41.9699243
+        ]
+      },
+      "properties": {
+        "name": "Groundswell Coffee Roasters — Ravenswood",
+        "address": "4839 N Damen Ave, Chicago, IL 60625",
+        "area": "Ravenswood / Lincoln Square",
+        "why_good": "Neighborhood roaster café with friendly staff, quiet/cozy work vibe, good beans, and kolaches.",
+        "notes": "Strong north-side fit; good when Nate wants calm but not empty.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6766423,
+          41.9758946
+        ]
+      },
+      "properties": {
+        "name": "Cafe Libra",
+        "address": "1905 W Foster Ave, Chicago, IL 60640",
+        "area": "Ravenswood / Lincoln Square",
+        "why_good": "Balkan café/coffee/dessert spot with cozy atmosphere, creative drinks, food, and laptop-friendly signals.",
+        "notes": "Strong overlooked north-side fit; good when Nate wants something warm, local, and not a standard coffee shop.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6768082,
+          41.8957846
+        ]
+      },
+      "properties": {
+        "name": "Prequel Cafe",
+        "address": "1957 W Chicago Ave, Chicago, IL 60622",
+        "area": "West Town / Ukrainian Village",
+        "why_good": "Bright/upscale café with serious coffee program, in-house pastries, and colorful contemporary feel.",
+        "notes": "Good West Town scout; probably best earlier in the day.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7013037,
+          41.9662621
+        ]
+      },
+      "properties": {
+        "name": "First Slice Pie Café — Manor",
+        "address": "4664 N Manor Ave, Chicago, IL 60625",
+        "area": "Ravenswood Manor / Francisco Brown Line",
+        "why_good": "Cozy wedge-shaped pie café steps from the Brown Line, with hardwood floors, mint-green walls, quiche, and stay-awhile energy.",
+        "notes": "Separate from the Andersonville First Slice already listed.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6509609,
+          41.8960473
+        ]
+      },
+      "properties": {
+        "name": "Aglaïa Coffee & Tea Co.",
+        "address": "925 W Chicago Ave, Chicago, IL 60642",
+        "area": "River West / West Town",
+        "why_good": "Local organic coffee/tea shop with comfy seating, soft natural light, and low-key neighborhood energy.",
+        "notes": "Good understated add; not flashy, but plausible for focused work.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6754422,
+          41.8962161
+        ]
+      },
+      "properties": {
+        "name": "West Town Bakery & Diner",
+        "address": "1916 W Chicago Ave, Chicago, IL 60622",
+        "area": "West Town / Ukrainian Village",
+        "why_good": "Retro diner/café/bakery hybrid with lots of indoor seating, full meals, coffee, and classic West Town feel.",
+        "notes": "Practical work-with-food option; avoid brunch rush.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6895656,
+          41.9615475
+        ]
+      },
+      "properties": {
+        "name": "Backlot Coffee — Montrose",
+        "address": "2424 W Montrose Ave, Chicago, IL 60618",
+        "area": "Ravenswood / Lincoln Square edge",
+        "why_good": "Airy modern café/roastery with lots of seating and strong espresso plus more inventive drinks.",
+        "notes": "Solid north-side add; more bright/practical than cozy-living-room.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6554969,
+          41.8961397
+        ]
+      },
+      "properties": {
+        "name": "Big Shoulders Coffee — West Town",
+        "address": "1105 W Chicago Ave, Chicago, IL 60642",
+        "area": "River West / West Town",
+        "why_good": "Cozy-enough coffee roaster café overlooking a busy intersection, with breakfast sandwiches/burritos and a broad café menu.",
+        "notes": "Useful if nearby; not exceptional, but a reasonable West Town work stop.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6489162,
+          41.8836965
+        ]
+      },
+      "properties": {
+        "name": "Sawada Coffee",
+        "address": "112 N Green St, Chicago, IL 60607",
+        "area": "West Loop / Fulton Market",
+        "why_good": "Rustic-chic coffee shop with matcha/coffee drinks, buzzy social energy, and strong laptop-friendly signals.",
+        "notes": "More popular/busy than intimate-cozy, but very normal for solo laptop work.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6572963,
+          41.9477152
+        ]
+      },
+      "properties": {
+        "name": "Hotel Zachary — 2nd Floor Lobby / Alma",
+        "address": "3630 N Clark St, Chicago, IL 60613",
+        "area": "Wrigleyville",
+        "why_good": "Spacious second-floor hotel lobby with communal tables, patio, coffee, and explicit remote-work mentions.",
+        "notes": "Very good north-side hotel-lobby option; game/event days may be chaos.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7142903,
+          41.9099959
+        ]
+      },
+      "properties": {
+        "name": "The Robey — 2nd Floor Lounge / Café Robey",
+        "address": "2018 W North Ave, Chicago, IL 60647",
+        "area": "Wicker Park / Milwaukee-Damen-North",
+        "why_good": "Design-hotel lounge above Café Robey, explicitly suited to laptop-side coffee or cocktails with neighborhood views.",
+        "notes": "Strong Wicker Park option; more stylish than cozy, but very usable.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6260294,
+          41.8861041
+        ]
+      },
+      "properties": {
+        "name": "Virgin Hotels Chicago — Commons Club",
+        "address": "203 N Wabash Ave, Chicago, IL 60601",
+        "area": "Loop",
+        "why_good": "Public hotel lounge/library/bar space where work and play intentionally intermingle, with flexible seating and eclectic design.",
+        "notes": "More downtown/slick than Moxy, but not sterile; good daytime-to-evening transition spot.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6345494,
+          41.9153354
+        ]
+      },
+      "properties": {
+        "name": "Hotel Lincoln — Lobby / Elaine's Coffee Call",
+        "address": "1816 N Clark St, Chicago, IL 60614",
+        "area": "Lincoln Park / Old Town edge",
+        "why_good": "Boutique hotel with quirky/vintage energy and lobby-level European-style coffee bar.",
+        "notes": "Not as spacious as Moxy, but useful neighborhood hotel-café scout by Lincoln Park.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6995198,
+          41.9245086
+        ]
+      },
+      "properties": {
+        "name": "Daisies",
+        "address": "2375 N Milwaukee Ave, Chicago, IL 60647",
+        "area": "Logan Square",
+        "why_good": "Daytime café/bakery mode is good for laptop work: coffee, excellent pastries, booths/tables, outlets, and enough space to not feel like a table hog.",
+        "notes": "Best earlier in the day before restaurant mode/crowds.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.699928,
+          41.924632
+        ]
+      },
+      "properties": {
+        "name": "Gaslight Coffee Roasters",
+        "address": "2385 N Milwaukee Ave, Chicago, IL 60647",
+        "area": "Logan Square",
+        "why_good": "Brick-walled roaster café with a studious feel and clear evidence of solo laptop workers settling in.",
+        "notes": "Good when Nate wants to work around other focused people without feeling conspicuous.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7051197,
+          41.9279155
+        ]
+      },
+      "properties": {
+        "name": "New Wave Coffee",
+        "address": "2557 N Milwaukee Ave, Chicago, IL 60647",
+        "area": "Logan Square",
+        "why_good": "Classic Logan Square laptop café with comfy couches, lots of seating, refill/bottomless coffee mentions, and a strong remote-work crowd signal.",
+        "notes": "Strong add; one of the clearer \"people actually work here\" candidates.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6988905,
+          41.9177811
+        ]
+      },
+      "properties": {
+        "name": "Middle Brow Bungalow",
+        "address": "2840 W Armitage Ave, Chicago, IL 60647",
+        "area": "Logan Square / Humboldt Park edge",
+        "why_good": "Warm daytime café/bakery/brewery space with communal energy, coffee, food, and a work-friendly weekday vibe.",
+        "notes": "Best during daytime café hours before it becomes more bar/restaurant/event energy.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7004808,
+          41.9392235
+        ]
+      },
+      "properties": {
+        "name": "Caravanserai / Dark Matter Coffee",
+        "address": "2901 W Belmont Ave, Chicago, IL 60618",
+        "area": "Avondale / Belmont",
+        "why_good": "Bright corner Dark Matter café with room to spread out, colorful pastries/donuts, and explicit weekday work/outlet mentions.",
+        "notes": "Good Belmont/Avondale scout; more bright-practical than plush-cozy.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6468464,
+          41.8537584
+        ]
+      },
+      "properties": {
+        "name": "La Malinche Coffee & Tea House",
+        "address": "2110 S Halsted St, Chicago, IL 60608",
+        "area": "Pilsen",
+        "why_good": "Strong work-anywhere setup with Wi-Fi, plenty of outlets, food, coffee/tea, and even a printer.",
+        "notes": "Good practical pick when Pilsen/south side is convenient.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6594144,
+          41.9328278
+        ]
+      },
+      "properties": {
+        "name": "Beermiscuous",
+        "address": "2812 N Lincoln Ave, Chicago, IL 60657",
+        "area": "Lakeview / Lincoln-Diversey-Racine",
+        "why_good": "Beer-bar-as-third-place: Wi-Fi, several outlets, comfy couches, laptop-normal atmosphere, and late-ish hours.",
+        "notes": "Better off-peak; avoid event/crowd times.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.659269,
+          41.9327221
+        ]
+      },
+      "properties": {
+        "name": "Vigo Coffee — Lincoln Park",
+        "address": "2800 N Lincoln Ave, Chicago, IL 60657",
+        "area": "Lincoln Park / Lakeview edge",
+        "why_good": "Mexican coffee shop with strong WFH/laptop-friendly signals and a less-generic café identity.",
+        "notes": "Good practical option near Lincoln/Diversey; hours are daytime-focused.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6708557,
+          41.9431184
+        ]
+      },
+      "properties": {
+        "name": "Bitter Pops",
+        "address": "3357 N Lincoln Ave, Chicago, IL 60657",
+        "area": "Lakeview / Roscoe Village edge",
+        "why_good": "Coffee bar / taproom / kitchen with a warm neighborhood third-place feel and good daytime laptop potential.",
+        "notes": "Better off-peak; likely more casual-work than deep-focus, especially when events or evening bar crowd pick up.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6592419,
+          41.9433812
+        ]
+      },
+      "properties": {
+        "name": "Two Hearted Queen",
+        "address": "1201 W Roscoe St, Chicago, IL 60657",
+        "area": "Lakeview / Roscoe Village",
+        "why_good": "Cozy neighborhood coffeehouse with living-room-ish energy and evidence of laptop use.",
+        "notes": "Verify current status before trekking over; one map source looked stale/contradictory, but other sources show it active.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6788778,
+          41.9429258
+        ]
+      },
+      "properties": {
+        "name": "The Bakehouse Chicago — Roscoe Village",
+        "address": "2009 W Roscoe St, Chicago, IL 60618",
+        "area": "Roscoe Village",
+        "why_good": "Neighborhood bakery/café with good coffee, pastries, later hours than many cafés, and reports of solid seating for laptop work.",
+        "notes": "Small, but strong Roscoe Village add; banana pudding and guava pastries got specific praise.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6531029,
+          41.93979
+        ]
+      },
+      "properties": {
+        "name": "Pedestrian Coffee",
+        "address": "939 W Belmont Ave, Chicago, IL 60657",
+        "area": "Lakeview / Belmont",
+        "why_good": "Very laptop-normal café with plenty of people posting up to work; good when Nate wants to not feel like the only remote worker.",
+        "notes": "More productive/quiet than warm-cozy, but clearly fits the laptop-crowd criterion.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6643599,
+          41.9498938
+        ]
+      },
+      "properties": {
+        "name": "Bombastic Cafe",
+        "address": "3732 N Southport Ave, Chicago, IL 60613",
+        "area": "Lakeview / Southport Corridor",
+        "why_good": "Family-run Southport café with cozy neighborhood vibes and work-friendly seating.",
+        "notes": "Good candidate for casual work in the Southport area.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6446069,
+          41.9382059
+        ]
+      },
+      "properties": {
+        "name": "Maison Marcel",
+        "address": "3114 N Broadway, Chicago, IL 60657",
+        "area": "Lakeview East / Broadway",
+        "why_good": "French café/bakery with cozy sofas, fireplace seating, and slow-morning laptop/book energy.",
+        "notes": "Strong vibe pick; probably best on quieter weekday mornings rather than brunch rush.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6399427,
+          41.9329917
+        ]
+      },
+      "properties": {
+        "name": "Klein's Bakery & Cafe",
+        "address": "426 W Diversey Pkwy, Chicago, IL 60614",
+        "area": "Lakeview East / Diversey",
+        "why_good": "Venezuelan bakery/café with down-to-earth warmth, good pastries, plenty of seating, and laptop-work mentions including a less-obvious back room.",
+        "notes": "Strong cozy Lakeview add; good for work with food, likely best outside peak pastry/brunch rush.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6791673,
+          41.932499
+        ]
+      },
+      "properties": {
+        "name": "Hexe Coffee Co.",
+        "address": "2000 W Diversey Pkwy, Chicago, IL 60614",
+        "area": "Roscoe Village / North Center edge",
+        "why_good": "Spacious coffee shop with strong workday potential, pastries, patio, and café-to-alcohol transition.",
+        "notes": "More industrial/spacious than cozy-warm, but a solid laptop-normal third place.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6760015,
+          41.949938
+        ]
+      },
+      "properties": {
+        "name": "Botanical Cafe",
+        "address": "3740 N Lincoln Ave, Chicago, IL 60613",
+        "area": "North Center / Lincoln-Southport edge",
+        "why_good": "Plant shop + café hybrid with greenery, botanical drinks, and a pleasant non-generic work vibe.",
+        "notes": "Good scout when Nate wants a calmer/greener café than standard coffee-shop energy.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6814313,
+          41.9575443
+        ]
+      },
+      "properties": {
+        "name": "Red Eyes Coffee",
+        "address": "4164 N Lincoln Ave, Chicago, IL 60618",
+        "area": "North Center",
+        "why_good": "Quaint, cozy neighborhood coffee/tea shop with breakfast/lunch bites and laid-back energy.",
+        "notes": "Humble local spot; likely better for a moderate session than a full remote-work day.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6479066,
+          41.9256648
+        ]
+      },
+      "properties": {
+        "name": "The Bourgeois Pig Cafe",
+        "address": "738 W Fullerton Ave, Chicago, IL 60614",
+        "area": "Lincoln Park",
+        "why_good": "Vintage-home coffeehouse with old café vibes, different rooms, and strong evidence as a cozy remote-work spot.",
+        "notes": "Strong adjacent-neighborhood fit; likely best on non-peak hours because it can get crowded.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6750233,
+          41.9616433
+        ]
+      },
+      "properties": {
+        "name": "Spoken Cafe",
+        "address": "1812 W Montrose Ave, Chicago, IL 60613",
+        "area": "Ravenswood / Montrose Brown Line",
+        "why_good": "Friendly neighborhood café under the Montrose Brown Line with cozy inside energy, good food, and laptop-normal use.",
+        "notes": "Good \"around people but not chaos\" candidate.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6746873,
+          41.9576052
+        ]
+      },
+      "properties": {
+        "name": "Bad Coffee",
+        "address": "1801 W Berteau Ave, Chicago, IL 60613",
+        "area": "North Center / Ravenswood edge",
+        "why_good": "Newer neighborhood coffee shop with comfortable seating and explicit laptop-friendly/work-café signals.",
+        "notes": "Close enough to be useful; likely better for focused daytime sessions than cozy evening lingering.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.679168,
+          41.9757834
+        ]
+      },
+      "properties": {
+        "name": "Side Practice Coffee",
+        "address": "5139 N Damen Ave, Chicago, IL 60625",
+        "area": "Ravenswood / Damen",
+        "why_good": "Cozy garden-level café with Filipino-inspired drinks, local art/small-business energy, and community/pop-up feel.",
+        "notes": "More personality than generic coffee; good scout for casual laptop work.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6872189,
+          41.9668411
+        ]
+      },
+      "properties": {
+        "name": "Oromo Cafe",
+        "address": "4703 N Lincoln Ave, Chicago, IL 60625",
+        "area": "Lincoln Square",
+        "why_good": "Cozy, compact, stylish café with warm design and explicit mentions of people working on laptops.",
+        "notes": "Good fit when Lincoln Square is convenient.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.697638,
+          41.9391483
+        ]
+      },
+      "properties": {
+        "name": "Avondale Coffee Club",
+        "address": "3185 N Elston Ave, Chicago, IL 60618",
+        "area": "Avondale",
+        "why_good": "Mid-century cozy café with exposed brick, plants, and a lingering book-reader/laptop-worker crowd.",
+        "notes": "Slightly farther, but very aligned with Nate's vibe criteria.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6572017,
+          41.9731619
+        ]
+      },
+      "properties": {
+        "name": "First Sip Cafe",
+        "address": "1057 W Argyle St, Chicago, IL 60640",
+        "area": "Uptown / Argyle / Vietnamese corridor",
+        "why_good": "Cozy plant-and-art-filled café with a chill vibe and clear evidence of people working on laptops.",
+        "notes": "Strong hidden-gem candidate on Argyle.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6591865,
+          41.9691978
+        ]
+      },
+      "properties": {
+        "name": "Uptown Lounge",
+        "address": "1136 W Lawrence Ave, Chicago, IL 60640",
+        "area": "Uptown",
+        "why_good": "Late-night neighborhood bar that now also runs as a daytime coffee shop/café, with friendly lounge energy and strong third-place potential.",
+        "notes": "Best during daytime café hours; likely shifts hard toward bar mode later.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6558318,
+          41.9693391
+        ]
+      },
+      "properties": {
+        "name": "Heritage Outpost — Lawrence House",
+        "address": "1020 W Lawrence Ave, Chicago, IL 60640",
+        "area": "Uptown / Lawrence House",
+        "why_good": "Quiet/minimalist coffee shop in the Lawrence House with a calm lobby-adjacent feel and laptop-user crowd.",
+        "notes": "Good for a couple focused hours; seating may be more counter/stool than plush-cozy.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6633665,
+          41.9651515
+        ]
+      },
+      "properties": {
+        "name": "Elevate Coffee — Uptown",
+        "address": "1325 W Wilson Ave, Chicago, IL 60640",
+        "area": "Uptown / Wilson",
+        "why_good": "Cozy Uptown café with strong work signals: fast connection, abundant seating, ambient noise, and quiet-study suitability.",
+        "notes": "Stronger than the Boystown location on the data; good Wilson cluster candidate.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.66559,
+          41.965202
+        ]
+      },
+      "properties": {
+        "name": "Crema Shop",
+        "address": "1401 W Wilson Ave, Chicago, IL 60640",
+        "area": "Uptown / Wilson",
+        "why_good": "Cozy neighborhood café with quiet-study and group-work signals near the Wilson cluster.",
+        "notes": "Seating may be limited, but useful if Nate is already in Uptown.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6538143,
+          41.9652873
+        ]
+      },
+      "properties": {
+        "name": "Everybody's Coffee",
+        "address": "935 W Wilson Ave, Chicago, IL 60640",
+        "area": "Uptown / Wilson",
+        "why_good": "Warm Uptown neighborhood coffeehouse with art/community energy and explicit laptop-work signals.",
+        "notes": "Strong candidate; limited daytime hours and closed Tuesdays per current listings.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6605853,
+          41.9655242
+        ]
+      },
+      "properties": {
+        "name": "Emerald City Coffee",
+        "address": "1224 W Wilson Ave, Chicago, IL 60640",
+        "area": "Uptown / Wilson",
+        "why_good": "Cozy, community-oriented local café with breakfast/bagels and study-spot energy.",
+        "notes": "Good Uptown scout near Wilson; likely better for casual work than calls.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6724275,
+          41.9106839
+        ]
+      },
+      "properties": {
+        "name": "Gallery Cafe — Bucktown",
+        "address": "1760 W North Ave, Chicago, IL 60622",
+        "area": "Bucktown / Wicker Park edge",
+        "why_good": "Local art coffee shop with an inviting vibe and evidence that people use it as a quiet-ish work spot.",
+        "notes": "More productive-café than deeply cozy, but worth keeping.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6382404,
+          41.9089727
+        ]
+      },
+      "properties": {
+        "name": "Kapéj Coffee",
+        "address": "1447 N Sedgwick St, Chicago, IL 60610",
+        "area": "Old Town / Lincoln Park edge",
+        "why_good": "Homey café with brick/leather/cozy interiors and warm hospitality.",
+        "notes": "Vibe is strong; laptop-crowd evidence is lighter, so treat as a scout candidate.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.664724,
+          41.8963141
+        ]
+      },
+      "properties": {
+        "name": "Standing Passengers",
+        "address": "1458 W Chicago Ave, Chicago, IL 60642",
+        "area": "West Town / Noble Square edge",
+        "why_good": "Laid-back coffee lounge with a contemporary welcoming feel and evidence of solo laptop use.",
+        "notes": "Seating may be tighter; better for casual solo work than sprawling out.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7135787,
+          41.932997
+        ]
+      },
+      "properties": {
+        "name": "The Brewed",
+        "address": "2843 N Milwaukee Ave, Chicago, IL 60618",
+        "area": "Avondale / Logan Square edge",
+        "why_good": "Horror-themed coffee shop with cozy booths and explicit mentions as a comfortable co-working / remote-work spot.",
+        "notes": "Weird in a good way; likely best for days when Nate wants more personality than a normal café.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6978085,
+          41.9233284
+        ]
+      },
+      "properties": {
+        "name": "Cafe Mustache",
+        "address": "2313 N Milwaukee Ave, Chicago, IL 60647",
+        "area": "Logan Square",
+        "why_good": "Eclectic daytime café / nighttime bar with vintage furniture, cozy daytime energy, and laptop work as part of the normal daytime scene.",
+        "notes": "Best during café hours before it shifts toward bar/music venue mode.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6939058,
+          41.9666185
+        ]
+      },
+      "properties": {
+        "name": "Beans & Bagels",
+        "address": "2601 W Leland Ave, Chicago, IL 60625",
+        "area": "Lincoln Square / Ravenswood",
+        "why_good": "Humble neighborhood coffee-and-bagel shop with regulars energy, a pleasant room, and evidence of people hanging out/working.",
+        "notes": "More practical/local than cool; that may be a feature.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6901835,
+          41.8955194
+        ]
+      },
+      "properties": {
+        "name": "Dark Matter Coffee — Star Lounge",
+        "address": "2521 W Chicago Ave, Chicago, IL 60622",
+        "area": "Ukrainian Village / West Town",
+        "why_good": "Funky Dark Matter flagship with murals, relaxed local energy, and evidence of quiet work sessions / laptop-friendly use.",
+        "notes": "Slightly outside the core north-side cluster, but worth keeping as a vibe-forward option.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6766761,
+          41.9098068
+        ]
+      },
+      "properties": {
+        "name": "Brü Chicago",
+        "address": "1562 N Milwaukee Ave, Chicago, IL 60622",
+        "area": "Wicker Park",
+        "why_good": "Laid-back coffeehouse with co-working-ish energy, loungey seating, and explicit laptop-work friendliness.",
+        "notes": "Good practical Wicker Park option; may feel a little more \"free coworking\" than intimate café.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7110484,
+          41.9172177
+        ]
+      },
+      "properties": {
+        "name": "Damn Fine Coffee Bar",
+        "address": "3317 W Armitage Ave, Chicago, IL 60647",
+        "area": "Logan Square",
+        "why_good": "Twin Peaks / Black Lodge-inspired coffee bar with strong personality and neighborhood-café energy.",
+        "notes": "More stylized than cozy-warm, but a good scout when Nate wants a weird third place.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7202832,
+          41.9371004
+        ]
+      },
+      "properties": {
+        "name": "Magnífico Coffee Roasters",
+        "address": "3063 N Milwaukee Ave, Chicago, IL 60618",
+        "area": "Avondale",
+        "why_good": "Colombian-owned café/roaster with local art, pastries, community feel, and evidence that it works for laptop time.",
+        "notes": "Good Avondale scout; less cozy evidence than Avondale Coffee Club or The Brewed.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7035248,
+          41.9322708
+        ]
+      },
+      "properties": {
+        "name": "Four Letter Word",
+        "address": "3022 W Diversey Ave, Chicago, IL 60647",
+        "area": "Logan Square / Avondale edge",
+        "why_good": "Specialty coffee spot with cute seating areas and a bookstore-ish/open-air feel; strong coffee/community reputation.",
+        "notes": "Limited hours; likely best for a focused 60–90 minute session, not all-day camping.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6344719,
+          41.8888053
+        ]
+      },
+      "properties": {
+        "name": "Marshall's Landing",
+        "address": "222 W Merchandise Mart Plaza, Chicago, IL 60654",
+        "area": "River North / Merchandise Mart",
+        "why_good": "Big polished café/restaurant/lounge with river views, lots of seating, outlets, Wi-Fi, and easy Brown/Purple Line access inside the Mart.",
+        "notes": "Purchase expected; weekdays/coffee-bar hours are the likely sweet spot.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6256206,
+          41.8996659
+        ]
+      },
+      "properties": {
+        "name": "Aster Hall",
+        "address": "900 N Michigan Ave, Chicago, IL 60611",
+        "area": "Gold Coast / 900 North Michigan Shops",
+        "why_good": "Food hall/bar/lounge with free Wi-Fi, great seating, quiet booths/corners, and a top-floor lounge/study vibe.",
+        "notes": "Reddit repeatedly recommends it for remote work; avoid lunch rush/tourist peaks.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6696852,
+          41.9545026
+        ]
+      },
+      "properties": {
+        "name": "The Long Room",
+        "address": "1612 W Irving Park Rd, Chicago, IL 60613",
+        "area": "North Center / Ravenswood / Irving-Ashland",
+        "why_good": "Bar that functions like a coffee shop earlier in the day: Wi-Fi, coffee/food, lots of space, and a low-key laptop-normal vibe.",
+        "notes": "Better mornings/weeknights than prime bar hours.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6810058,
+          41.9539652
+        ]
+      },
+      "properties": {
+        "name": "Coffee Joint",
+        "address": "2059 W Irving Park Rd, Chicago, IL 60618",
+        "area": "North Center / Irving Park",
+        "why_good": "Comfortable café with strong work data: fast connection, adequate seating, ambient noise, quiet-study signal, and dog-friendly note.",
+        "notes": "Good focused-work scout along Irving Park.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6929572,
+          41.9199096
+        ]
+      },
+      "properties": {
+        "name": "Pilot Project Brewing — Logan Square",
+        "address": "2140 N Milwaukee Ave, Chicago, IL 60647",
+        "area": "Logan Square",
+        "why_good": "Brewery incubator/taproom with coffee, sandwiches, communal seating, daytime laptop crowd, and beer later.",
+        "notes": "Evening events/trivia can kill focus.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7135805,
+          41.9678694
+        ]
+      },
+      "properties": {
+        "name": "Nighthawk",
+        "address": "4744 N Kimball Ave, Chicago, IL 60625",
+        "area": "Albany Park / Kimball Brown Line",
+        "why_good": "Coffee shop/dive-bar hybrid with Wi-Fi, booths, relaxed atmosphere, and no precious café energy.",
+        "notes": "Far north; best for casual work, not pristine deep-focus days.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6798243,
+          41.9175899
+        ]
+      },
+      "properties": {
+        "name": "The Map Room",
+        "address": "1949 N Hoyne Ave, Chicago, IL 60647",
+        "area": "Bucktown",
+        "why_good": "Classic neighborhood bar with daytime coffeehouse energy, craft beer, coffee, maps/books everywhere, and a low-key regulars vibe.",
+        "notes": "Limited outlets; better daytime than evening.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6680025,
+          41.9715053
+        ]
+      },
+      "properties": {
+        "name": "Pick Me Up Cafe",
+        "address": "4882 N Clark St, Chicago, IL 60640",
+        "area": "Andersonville / Uptown edge",
+        "why_good": "Late-open diner/café with coffee, food, and long-standing \"evening café\" reputation; useful when normal coffee shops close absurdly early.",
+        "notes": "More restaurant/diner energy than quiet café; good late option to scout.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.647038,
+          41.9243849
+        ]
+      },
+      "properties": {
+        "name": "Philz Coffee — Lincoln Park",
+        "address": "2323 N Lincoln Ave, Chicago, IL 60614",
+        "area": "Lincoln Park / Lincoln Common",
+        "why_good": "Bright chain café with big windows, strong coffee, and Reddit mention for working with lots of outlets.",
+        "notes": "Practical rather than cozy; likely good when Nate wants reliable laptop-normal energy nearby.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6632892,
+          41.9359674
+        ]
+      },
+      "properties": {
+        "name": "Golden Apple Grille & Breakfast House",
+        "address": "2971 N Lincoln Ave, Chicago, IL 60657",
+        "area": "Lakeview / Lincoln-Ashland-Belmont",
+        "why_good": "24-hour diner with all-day breakfast and classic late-night Chicago utility.",
+        "notes": "Not a coffee-shop vibe, but useful as an overnight/later-work fallback.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6679241,
+          41.9104644
+        ]
+      },
+      "properties": {
+        "name": "Hollywood Grill",
+        "address": "1601 W North Ave, Chicago, IL 60622",
+        "area": "Wicker Park / Bucktown",
+        "why_good": "24-hour diner at North/Ashland with breakfast, burgers, and late-night seating.",
+        "notes": "Work-suitable only in the diner/fallback sense; probably not for deep focus.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6369732,
+          41.8968179
+        ]
+      },
+      "properties": {
+        "name": "Griddle 24",
+        "address": "334 W Chicago Ave, Chicago, IL 60654",
+        "area": "River North",
+        "why_good": "24-hour diner with central location, breakfast/lunch/dinner, and late-night availability.",
+        "notes": "Useful downtown late fallback; not cozy-café coded.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.684373,
+          41.9627403
+        ]
+      },
+      "properties": {
+        "name": "Sulzer Regional Library",
+        "address": "4455 N Lincoln Ave, Chicago, IL 60625",
+        "area": "Lincoln Square / Ravenswood",
+        "why_good": "Large regional Chicago Public Library branch with free Wi-Fi, plenty of library work energy, and community mentions as a nice north-side library.",
+        "notes": "Good quiet-focus option; Reddit also mentions private rooms for interviews/calls.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6554405,
+          41.9250267
+        ]
+      },
+      "properties": {
+        "name": "DePaul John T. Richardson Library",
+        "address": "2350 N Kenmore Ave, Chicago, IL 60614",
+        "area": "Lincoln Park / DePaul",
+        "why_good": "Campus library with public visitor access during regular hours, lots of serious study/work energy, and a convenient Lincoln Park location.",
+        "notes": "Access is not fully frictionless: public access appears allowed before 9 PM, but may require ID/security check; after 9 PM is DePaul-only.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6684041,
+          41.9826831
+        ]
+      },
+      "properties": {
+        "name": "The Understudy Coffee & Books",
+        "address": "5531 N Clark St, Chicago, IL 60640",
+        "area": "Andersonville",
+        "why_good": "Theater bookstore + coffee shop; Reddit likes it for working near books. Strong vibe pick.",
+        "notes": "Added from Nate's Reddit-based remote-work notes.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6681337,
+          41.9820097
+        ]
+      },
+      "properties": {
+        "name": "Eli Tea Bar",
+        "address": "5507 N Clark St, Chicago, IL 60640",
+        "area": "Andersonville",
+        "why_good": "Queer-owned tea bar with cozy tables, late-ish hours, and warm booze-free third-place energy.",
+        "notes": "Good non-coffee Andersonville option; likely better for casual laptop work / reading than call-heavy work.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6607052,
+          41.9919484
+        ]
+      },
+      "properties": {
+        "name": "Loaves & Witches",
+        "address": "6034 N Broadway, Chicago, IL 60660",
+        "area": "Edgewater / Andersonville edge",
+        "why_good": "Queer-owned sober bakery/coffee shop explicitly built as an inclusive third space, with warm witchy/community energy.",
+        "notes": "Strong Eli-adjacent pick; likely better for casual work, reading, or a social-but-sober vibe than deep calls.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6601369,
+          41.9780323
+        ]
+      },
+      "properties": {
+        "name": "The Lost Hours",
+        "address": "5256 N Broadway, Chicago, IL 60640",
+        "area": "Andersonville",
+        "why_good": "Cozy, quaint coffee shop with warm community framing and a peaceful neighborhood feel.",
+        "notes": "Good Andersonville scout for laptop work when The Understudy/Eli are too full.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.668588,
+          41.9760509
+        ]
+      },
+      "properties": {
+        "name": "La Colombe Coffee Roasters — Andersonville",
+        "address": "5158 N Clark St, Chicago, IL 60640",
+        "area": "Andersonville",
+        "why_good": "Spacious Andersonville branch with warm wood/modern café feel and clear remote-work suitability.",
+        "notes": "Chain-ish, but useful if Nate wants a reliable Andersonville laptop crowd.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6693839,
+          41.979702
+        ]
+      },
+      "properties": {
+        "name": "First Slice Pie Café",
+        "address": "5357 N Ashland Ave, Chicago, IL 60640",
+        "area": "Andersonville",
+        "why_good": "Charitable pie café with cozy neighborhood energy and reports of being less crowded than nearby Clark spots.",
+        "notes": "Better for casual work with food/dessert than all-day camping.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7107187,
+          41.9828196
+        ]
+      },
+      "properties": {
+        "name": "Java & Mug",
+        "address": "3247 W Bryn Mawr Ave, Chicago, IL 60659",
+        "area": "North Park / Bryn Mawr",
+        "why_good": "Korean café with a clean, cozy atmosphere and explicit mentions as good for working or studying.",
+        "notes": "Farther west, but worth keeping as a quiet late-ish study/work option.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6680747,
+          41.9786072
+        ]
+      },
+      "properties": {
+        "name": "Kopi A Travelers Cafe",
+        "address": "5317 N Clark St, Chicago, IL 60640",
+        "area": "Andersonville",
+        "why_good": "Cozy, old-school Andersonville café; Reddit mentions it for late-ish/cozy work sessions.",
+        "notes": "Added from Nate's Reddit-based remote-work notes.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6691213,
+          41.9842875
+        ]
+      },
+      "properties": {
+        "name": "The Coffee Studio",
+        "address": "5628 N Clark St, Chicago, IL 60660",
+        "area": "Andersonville",
+        "why_good": "Good local espresso bar; Reddit specifically mentions it for getting work done in Andersonville.",
+        "notes": "Smaller spot; seating can be tight.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6787234,
+          41.9689024
+        ]
+      },
+      "properties": {
+        "name": "Sweet Moon",
+        "address": "1964 W Lawrence Ave, Chicago, IL 60640",
+        "area": "Ravenswood / Lincoln Square",
+        "why_good": "Full café/restaurant; Reddit says people definitely work there, plus it's near Ravenswood Metra.",
+        "notes": "Added from Nate's Reddit-based remote-work notes.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6572866,
+          41.994444
+        ]
+      },
+      "properties": {
+        "name": "Metropolis Coffee Company",
+        "address": "1039 W Granville Ave, Chicago, IL 60660",
+        "area": "Edgewater",
+        "why_good": "Classic Edgewater/Loyola-adjacent café; Reddit calls it mostly regulars and Loyola students.",
+        "notes": "Added from Nate's Reddit-based remote-work notes.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6247973,
+          41.8816449
+        ]
+      },
+      "properties": {
+        "name": "Chicago Athletic Association — Drawing Room",
+        "address": "12 S Michigan Ave, 2nd floor, Chicago, IL 60603",
+        "area": "Loop / Millennium Park",
+        "why_good": "Gorgeous hotel lounge/lobby with public Wi-Fi, comfy chairs/couches, fireplaces, coffee/bar/food nearby, and a calm downtown work vibe.",
+        "notes": "Better for focused solo work than calls; buying something is polite but it functions like a public hotel lounge.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6553476,
+          41.8908888
+        ]
+      },
+      "properties": {
+        "name": "Bocadillo Market",
+        "address": "1117 W Grand Ave, Ste 1, Chicago, IL 60642",
+        "area": "West Town / River West",
+        "why_good": "Spanish-inspired café/market with cortados, pastries, explicit laptop-camping tolerance, and a hidden back patio.",
+        "notes": "Strong fit; casual, warm, and useful for work with food.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6881358,
+          41.96756
+        ]
+      },
+      "properties": {
+        "name": "The Book Cellar",
+        "address": "4736-38 N Lincoln Ave, Chicago, IL 60625",
+        "area": "Lincoln Square",
+        "why_good": "Independent bookstore with a café, coffee/wine, cozy seating, and strong \"come in and stay awhile\" energy.",
+        "notes": "Excellent nonstandard third-place option; seating may be limited during events or busy browsing times.",
+        "category": "WFH",
+        "favorite": false
+      }
+    }
+  ]
+}

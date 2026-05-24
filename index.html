@@ -75,10 +75,15 @@
 <div id="legend">
   <h3>Chicago Bike Network</h3>
   <label class="row"><input type="checkbox" data-facility="Protected Bike Lane" checked disabled><span class="swatch pbl"></span><span class="label">Protected</span></label>
-  <label class="row off"><input type="checkbox" data-facility="Neighborhood Greenway" disabled><span class="swatch green"></span><span class="label">Greenway</span></label>
+  <label class="row"><input type="checkbox" data-facility="Neighborhood Greenway" checked disabled><span class="swatch green"></span><span class="label">Greenway</span></label>
   <label class="row"><input type="checkbox" data-facility="Buffered Bike Lane" checked disabled><span class="swatch buff"></span><span class="label">Buffered</span></label>
   <label class="row"><input type="checkbox" data-facility="Bike Lane" checked disabled><span class="swatch lane"></span><span class="label">Standard</span></label>
   <label class="row off"><input type="checkbox" data-facility="Trail" disabled><span class="swatch trail2"></span><span class="label">Trail</span></label>
+  <div id="places-section" class="footnote">
+    <strong style="display:block; margin-bottom:6px; color:#222;">Places</strong>
+    <div id="places-categories"></div>
+    <div style="font-size:11px; color:#555; margin-top:6px;">&#9733; = favorite</div>
+  </div>
   <div class="footnote">
     <label class="row off"><input type="checkbox" id="toggle-crime"><span class="swatch crime"></span><span class="label">Crime</span></label>
   </div>
@@ -104,8 +109,28 @@ const escapeHtml = (value) => String(value)
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#39;');
 
+// Builds an HTMLImageElement for a pin. Circle for normal, star for favorite,
+// both filled with the category color. Returned image is fully decoded so it
+// can be handed straight to map.addImage().
+async function createPinImage(color, isFavorite) {
+  const svg = isFavorite
+    ? '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24">' +
+        '<path d="M12 2 L14.5 9 L22 9 L16 14 L18 22 L12 17 L6 22 L8 14 L2 9 L9.5 9 Z" ' +
+              'fill="' + color + '" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>' +
+      '</svg>'
+    : '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20">' +
+        '<circle cx="10" cy="10" r="7" fill="' + color + '" stroke="white" stroke-width="2"/>' +
+      '</svg>';
+  const img = new Image();
+  img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+  await img.decode();
+  return img;
+}
+
 const PROPOSED_PBLS_URL = './proposed-pbls.geojson';
 const HIGH_CRIME_URL   = './high-crime-neighborhoods.geojson';
+const CATEGORIES_URL   = './categories.json';
+const LOCATIONS_URL    = './locations.geojson';
 
 // Colors lifted straight from the WebMap's CIM symbology.
 const PBL_COLOR  = '#22CBDE';
@@ -219,7 +244,7 @@ map.on('load', async () => {
     type: 'line',
     source: 'bike-network',
     filter: ['==', ['get', 'BIKE_DSPLY'], 'Neighborhood Greenway'],
-    layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' },
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
     paint: { 'line-color': GREENWAY_COLOR, 'line-width': 2 }
   });
   map.addLayer({
@@ -286,6 +311,8 @@ map.on('load', async () => {
   // Click popup — trails only. Single map-level handler so overlapping
   // features only produce one popup.
   const trailClickLayers = ['off-street-trail', 'trails-v2'];
+  // Populated below as each category becomes its own symbol layer.
+  const placeLayerIds = [];
   map.on('click', (e) => {
     const features = map.queryRenderedFeatures(e.point, { layers: trailClickLayers });
     if (features.length === 0) return;
@@ -305,7 +332,7 @@ map.on('load', async () => {
     new maplibregl.Popup().setLngLat(e.lngLat).setHTML(html).addTo(map);
   });
   map.on('mousemove', (e) => {
-    const features = map.queryRenderedFeatures(e.point, { layers: trailClickLayers });
+    const features = map.queryRenderedFeatures(e.point, { layers: [...trailClickLayers, ...placeLayerIds] });
     map.getCanvas().style.cursor = features.length > 0 ? 'pointer' : '';
   });
 
@@ -337,6 +364,88 @@ map.on('load', async () => {
     source: 'proposed-pbls',
     layout: { 'line-cap': 'round', 'line-join': 'round' },
     paint: { 'line-color': PBL_COLOR, 'line-width': 3 }
+  });
+
+  // --- Place pins ---
+  // categories.json + locations.geojson together drive one symbol layer per
+  // category. Adding a new category later = one entry in categories.json.
+  // Pin shape encodes favorite (★) vs not (●); color encodes category.
+  let categories = {};
+  try {
+    const catRes = await fetch(CATEGORIES_URL, { cache: 'no-cache' });
+    if (catRes.ok) categories = await catRes.json();
+  } catch (err) {
+    console.warn('Could not load categories.json:', err);
+  }
+
+  let placeLocations = { type: 'FeatureCollection', features: [] };
+  try {
+    const locRes = await fetch(LOCATIONS_URL, { cache: 'no-cache' });
+    if (locRes.ok) {
+      placeLocations = await locRes.json();
+      console.log('Loaded ' + (placeLocations.features || []).length + ' place pins');
+    }
+  } catch (err) {
+    console.warn('Could not load locations.geojson:', err);
+  }
+
+  map.addSource('places', { type: 'geojson', data: placeLocations });
+
+  const placeLegendContainer = document.getElementById('places-categories');
+  for (const [catName, catCfg] of Object.entries(categories)) {
+    const layerId = 'places-' + catName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    const circleIconId = layerId + '-circle';
+    const starIconId   = layerId + '-star';
+    map.addImage(circleIconId, await createPinImage(catCfg.color, false));
+    map.addImage(starIconId,   await createPinImage(catCfg.color, true));
+    map.addLayer({
+      id: layerId,
+      type: 'symbol',
+      source: 'places',
+      filter: ['==', ['get', 'category'], catName],
+      layout: {
+        'icon-image': ['case', ['get', 'favorite'], starIconId, circleIconId],
+        'icon-size': [
+          'interpolate', ['linear'], ['zoom'],
+          10, 0.4,
+          13, 0.7,
+          15, 1.0
+        ],
+        'icon-allow-overlap': true,
+        'icon-ignore-placement': true
+      }
+    });
+    placeLayerIds.push(layerId);
+
+    const row = document.createElement('label');
+    row.className = 'row';
+    row.innerHTML =
+      '<input type="checkbox" data-place-layer="' + layerId + '" checked>' +
+      '<span class="swatch" style="background:' + catCfg.color + '; width:14px; height:14px; border-radius:50%;"></span>' +
+      '<span class="label">' + escapeHtml(catCfg.label || catName) + '</span>';
+    placeLegendContainer.appendChild(row);
+    const checkbox = row.querySelector('input');
+    checkbox.addEventListener('change', (event) => {
+      const visible = event.target.checked;
+      map.setLayoutProperty(layerId, 'visibility', visible ? 'visible' : 'none');
+      row.classList.toggle('off', !visible);
+    });
+  }
+
+  // Place pin click popup. Separate from the trail handler so the field
+  // shape stays simple; both handlers coexist because each filters to its
+  // own layer list.
+  map.on('click', (e) => {
+    const features = map.queryRenderedFeatures(e.point, { layers: placeLayerIds });
+    if (features.length === 0) return;
+    const a = features[0].properties || {};
+    const lines = [];
+    lines.push('<strong>' + escapeHtml(a.name || '(unnamed)') + (a.favorite ? ' &#9733;' : '') + '</strong>');
+    if (a.address)  lines.push('<div>' + escapeHtml(a.address) + '</div>');
+    if (a.area)     lines.push('<div><em>' + escapeHtml(a.area) + '</em></div>');
+    if (a.why_good) lines.push('<div style="margin-top:6px">' + escapeHtml(a.why_good) + '</div>');
+    if (a.notes)    lines.push('<div style="margin-top:6px;color:#555;font-size:11px">' + escapeHtml(a.notes) + '</div>');
+    new maplibregl.Popup().setLngLat(e.lngLat).setHTML(lines.join('')).addTo(map);
   });
 
   // --- Facility-type show/hide toggles ---
