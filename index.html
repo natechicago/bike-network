@@ -131,6 +131,7 @@ const PROPOSED_PBLS_URL = './proposed-pbls.geojson';
 const HIGH_CRIME_URL   = './high-crime-neighborhoods.geojson';
 const CATEGORIES_URL   = './categories.json';
 const LOCATIONS_URL    = './locations.geojson';
+const OVERRIDES_URL    = './overrides.json';
 
 // Colors lifted straight from the WebMap's CIM symbology.
 const PBL_COLOR  = '#22CBDE';
@@ -209,6 +210,30 @@ map.on('load', async () => {
   }
   const geojson = await response.json();
   console.log('Loaded ' + (geojson.features || []).length + ' bike network segments');
+
+  // Apply local overrides to the live CDOT data (e.g., reclassifying a segment
+  // that no longer matches the field). Matched by attribute equality so patches
+  // stay readable and survive any FID renumbering on the ArcGIS side.
+  try {
+    const ovRes = await fetch(OVERRIDES_URL, { cache: 'no-cache' });
+    if (ovRes.ok) {
+      const overrides = await ovRes.json();
+      let applied = 0;
+      for (const feat of geojson.features || []) {
+        const props = feat.properties || {};
+        for (const ov of overrides) {
+          const matches = Object.entries(ov.match).every(([k, v]) => props[k] === v);
+          if (matches) {
+            Object.assign(props, ov.set);
+            applied++;
+          }
+        }
+      }
+      console.log('Applied ' + applied + ' override(s) to bike network');
+    }
+  } catch (err) {
+    console.warn('Could not load overrides.json:', err);
+  }
 
   map.addSource('bike-network', { type: 'geojson', data: geojson });
 

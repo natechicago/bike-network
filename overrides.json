@@ -1,0 +1,13 @@
+[
+  {
+    "match": {
+      "ST_STREET": "CLYBOURN AVE",
+      "ST_FROM": "W NORTH AVE",
+      "ST_TO": "W BELMONT AVE"
+    },
+    "set": {
+      "BIKE_DSPLY": "Bike Lane"
+    },
+    "note": "Field reality is standard, not buffered (Nate, 2026-05)"
+  }
+]
