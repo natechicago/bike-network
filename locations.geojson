@@ -918,25 +918,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -87.6446069,
-          41.9382059
-        ]
-      },
-      "properties": {
-        "name": "Maison Marcel",
-        "address": "3114 N Broadway, Chicago, IL 60657",
-        "area": "Lakeview East / Broadway",
-        "why_good": "French café/bakery with cozy sofas, fireplace seating, and slow-morning laptop/book energy.",
-        "notes": "Strong vibe pick; probably best on quieter weekday mornings rather than brunch rush.",
-        "category": "WFH",
-        "favorite": false
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -87.6399427,
           41.9329917
         ]
@@ -1992,6 +1973,44 @@
         "area": "Lincoln Square",
         "why_good": "Independent bookstore with a café, coffee/wine, cozy seating, and strong \"come in and stay awhile\" energy.",
         "notes": "Excellent nonstandard third-place option; seating may be limited during events or busy browsing times.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6515281,
+          41.9619286
+        ]
+      },
+      "properties": {
+        "name": "Loving Heart Vegan Cafe",
+        "address": "838 W Montrose Ave, Chicago, IL 60613",
+        "area": "Uptown / Buena Park",
+        "why_good": "Laid-back plant-based cafe just east of the Wilson cluster; wraps, bowls, smoothies, and raw cakes make it usable for longer sessions where you want substantive food on hand.",
+        "notes": "Vegan/organic. WFH-suitability isn't well-documented online — treat as a vibe/lunch scout until you've sat there with a laptop. Phone 773-561-5399 to confirm Wi-Fi first.",
+        "category": "WFH",
+        "favorite": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.644239,
+          41.938569
+        ]
+      },
+      "properties": {
+        "name": "OMI Cafe",
+        "address": "3135 N Broadway, Chicago, IL 60657",
+        "area": "Lakeview East / Broadway",
+        "why_good": "Japanese-inspired cafe with bilevel seating that stays surprisingly quiet, free Wi-Fi, and a low music volume; softer/more social vibe than Intelligentsia a block north.",
+        "notes": "Multiple reviewers flag tall tables vs short bench-seating as awkward for laptops, and Wi-Fi is reportedly inconsistent — better for shorter sessions or low-tech work.",
         "category": "WFH",
         "favorite": false
       }
