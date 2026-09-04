@@ -140,27 +140,35 @@ const GREENWAY_COLOR = '#2FB13F';
 const LANE_COLOR = '#2CBDEE';
 const TRAILS_V2_COLOR = '#9c4dcc';
 
+// Basemap: OpenFreeMap's "positron" vector style. This replaced the CARTO
+// raster tiles (a-d.basemaps.cartocdn.com/light_all) in Sept 2026, after CARTO
+// started stamping "API KEY REQUIRED" over anonymous requests to that CDN.
+// OpenFreeMap is free, needs no key or signup, and positron is the same light
+// grey Positron design, so the map looks essentially unchanged -- but vector,
+// so labels stay sharp at every zoom instead of topping out at the @2x raster.
+const BASEMAP_STYLE_URL = 'https://tiles.openfreemap.org/styles/positron';
+
+const CDOT_BIKE_NETWORK_URL =
+  'https://www.chicago.gov/city/en/sites/complete-streets-chicago/home/bike-program/existing-bike-network.html';
+
 const map = new maplibregl.Map({
   container: 'map',
-  style: {
-    version: 8,
-    sources: {
-      carto: {
-        type: 'raster',
-        tiles: [
-          'https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
-          'https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
-          'https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
-          'https://d.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png'
-        ],
-        tileSize: 256,
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ' +
-          '&copy; <a href="https://carto.com/attributions">CARTO</a> &middot; ' +
-          'Bike data: <a href="https://www.chicago.gov/city/en/sites/complete-streets-chicago/home/bike-program/existing-bike-network.html">CDOT</a>'
-      }
-    },
-    layers: [{ id: 'basemap', type: 'raster', source: 'carto' }]
+  style: BASEMAP_STYLE_URL,
+  // Attribution used to ride along on the raster source's `attribution` field.
+  // The positron style JSON has no attribution of its own -- the OpenStreetMap
+  // credit arrives from the TileJSON at tiles.openfreemap.org/planet -- so we
+  // state OSM here too and let MapLibre sort it out. It drops any entry that
+  // duplicates or is a substring of another, so the credit can't show twice.
+  // Note that passing an options object replaces MapLibre's defaults wholesale,
+  // so `compact` and the MapLibre credit have to be restated or the attribution
+  // bar un-collapses and loses that link.
+  attributionControl: {
+    compact: true,
+    customAttribution: [
+      '<a href="https://maplibre.org/" target="_blank">MapLibre</a>',
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      'Bike data: <a href="' + CDOT_BIKE_NETWORK_URL + '">CDOT</a>'
+    ]
   },
   center: [-87.65, 41.88],
   zoom: 11
